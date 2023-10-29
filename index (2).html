@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light Simulator</title>
+    <style>
+        html,body,h1,h2,h3,h4,h5,h6{
+    padding: 0;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    width:100%;
+    min-height: 100vh;
+    max-width: 100%;
+    justify-content: center;
+    background-image: url("trafficjam.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:wheat;
+}
+.light-container{
+    background-color: black;
+    padding: 1rem;
+    border-radius: 100px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+.light-container>div{
+    height: 100px;
+    flex-grow: 1;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+    background-color: greenyellow
+}
+.yellow{
+    background-color: yellow;
+}
+.countdown{
+    color: aqua;
+    font-size: 4rem;
+}
+    </style>
+</head>
+<body>
+    <div class="light-container">
+        <div class="red"></div>
+        <div class="yellow"></div>
+        <div class="green"></div>
+   
+    </div>
+     <div class="countdown">
+        <h6>Countdown</h6>
+        <h4 id="timer"></h4>
+    </div>
+    <script >
+        const redContainer = document.querySelector(".red");
+const greenContainer = document.querySelector(".green");
+const yellowContainer = document.querySelector(".yellow");
+const timer = document.querySelector("#timer")
+count = 0;
+let time = 60;
+setInterval(()=>{
+    time--;
+    if(time<0){
+        time=60;
+        count++;
+        updateColor();
+    }
+    timer.textContent = time;
+},20)
+function updateColor(){
+    color = count%3;
+    if(color==0){
+        redContainer.style.backgroundColor = "red"
+        greenContainer.style.backgroundColor = "green"
+        yellowContainer.style.backgroundColor = "darkkhaki"
+    }
+    else if(color==1){
+        redContainer.style.backgroundColor = "darkred"
+        yellowContainer.style.backgroundColor = "yellow"
+        greenContainer.style.backgroundColor = "green"
+    }
+    else{
+        redContainer.style.backgroundColor = "darkred"
+        greenContainer.style.backgroundColor = "greenyellow"
+        yellowContainer.style.backgroundColor = "darkkhaki"
+    }
+}
+    </script>
+</body>
+</html>
